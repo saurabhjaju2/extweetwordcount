@@ -17,7 +17,7 @@ if len(sys.argv) == 2:
 	word = str(sys.argv[1])
 	cur.execute("SELECT word , count FROM Tweetwordcount WHERE word = %s;", (word, ))
 	record = cur.fetchone()	
-	print(record)
+	print("Total occurence count of \"%s\": %s" %(record[0], record[1]))
 
 ## Only file name provided
 elif len(sys.argv) == 1:
@@ -26,7 +26,7 @@ elif len(sys.argv) == 1:
 	## sorting counts using a lambda function
 	sortedTable =sorted(countTable, key = lambda countTable: countTable[0])
 	for tup in sortedTable:
-		print(tup[0], tup[1])	
+		print("Total occurence count of \"%s\": %s" %(tup[0], tup[1]))	
 else:
 	print('Please select a word to search in the tweets or see the complete table')
 	print('Use the following format: fileresults.py word or python finalresults.py')
